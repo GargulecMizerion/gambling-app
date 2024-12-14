@@ -1,10 +1,13 @@
-import {View, Text} from 'react-native'
-import React from 'react'
+import {View, Text, TouchableOpacity} from 'react-native'
+import React, {useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Input, Button} from "@rneui/base";
-import {useNavigation} from "expo-router";
+import {StatusBar} from "expo-status-bar";
+import { useNavigation } from '@react-navigation/native';
+
 
 const LoginScreen = () => {
+    const [loginData, setLoginData] = useState({username: "", password: ""});
     const navigation = useNavigation();
     return (
         <SafeAreaView>
@@ -19,7 +22,9 @@ const LoginScreen = () => {
                     borderRadius: 5,
                     padding: 5,
                     paddingLeft: 15,
-                }}   placeholderTextColor={"black"} cursorColor={"black"}/>
+                }}   placeholderTextColor={"black"}
+                       cursorColor={"black"}
+                       onChangeText={(e) => setLoginData({...loginData, username: e})} />
 
                 <Input placeholder={"Password"} leftIcon={{type: "font-awesome", name: "lock"}}       inputStyle={{
                     color: 'black', // Kolor tekstu użytkownika
@@ -29,11 +34,25 @@ const LoginScreen = () => {
                     borderRadius: 5,
                     padding: 5,
                     paddingLeft: 15,
-                }}   placeholderTextColor={"black"}  cursorColor={"black"} secureTextEntry={true} />
-                    <Button title="Login" onPress={() => navigation.navigate("Register")} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
-            </View>
+                }}   placeholderTextColor={"black"}
+                       cursorColor={"black"}
+                       secureTextEntry={true}
+                       onChangeText={(e) => setLoginData({...loginData, password: e})} />
+
+                    <Button title="Login" onPress={() => navigation.navigate("HomePage")} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
+                    <View className={"flex-row justify-center pt-5 gap-2"}>
+                        <Text className={"text-lg text-gray-100"}>
+                            Don't have an account?
+                        </Text>
+                        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                            <Text  className={"text-lg"}>Register</Text>
+                        </TouchableOpacity>
+
+                    </View>
             </View>
 
+            </View>
+            <StatusBar backgroundColor={"#FF7F11"} translucent={false} style="light" />
         </SafeAreaView>
     )
 }
