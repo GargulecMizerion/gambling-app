@@ -1,15 +1,23 @@
 import { Text, View } from "react-native";
+import "../global.css";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginScreen from "@/app/(auth)/LoginScreen";
+import RegisterScreen from "@/app/(auth)/RegisterScreen";
+import {NavigationContainer} from "@react-navigation/native";
+import {SafeAreaProvider} from "react-native-safe-area-context";
+import {StatusBar} from "expo-status-bar";
+
+const Stack = createNativeStackNavigator();
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-amber-500">Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <SafeAreaProvider>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={LoginScreen}/>
+          <Stack.Screen name="Register" component={RegisterScreen}/>
+      </Stack.Navigator>
+        <StatusBar backgroundColor={"#FF7F11"} />
+    </SafeAreaProvider>
+
   );
 }
