@@ -4,10 +4,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Button } from "@rneui/base";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from '@react-navigation/native';
+import {registerUser} from "@/lib/appwrite";
 
 const RegisterScreen = () => {
     const [registerData, setRegisterData] = useState({ username: "", email: "", password: "" });
     const navigation = useNavigation();
+
+    const handleRegister = async () => {
+        //console.log(registerData);
+        await registerUser(registerData.username ,registerData.email, registerData.password);
+
+    }
 
     return (
         <SafeAreaView>
@@ -71,7 +78,7 @@ const RegisterScreen = () => {
 
                     <Button
                         title={<Text style={{ color: "white", fontSize: 16 }}>Register</Text>}
-                        onPress={() => navigation.navigate("Login")}
+                        onPress={handleRegister}
                         containerStyle={{ paddingHorizontal: 10, borderRadius: 0 }}
                         color={"#262626"}
                     />
