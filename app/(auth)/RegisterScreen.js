@@ -1,18 +1,28 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Input, Button } from "@rneui/base";
+import {Input, Button, Dialog} from "@rneui/base";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from '@react-navigation/native';
 import {registerUser} from "@/lib/appwrite";
+import {DialogButton} from "@rneui/base/dist/Dialog/Dialog.Button";
 
 const RegisterScreen = () => {
     const [registerData, setRegisterData] = useState({ username: "", email: "", password: "" });
+    const [dialogVisibility, setDialogVisibility] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigation = useNavigation();
 
     const handleRegister = async () => {
+        if (!registerData.username || !registerData.password || !registerData.email) {
+            setDialogVisibility(true);
+        }
+
+        setIsSubmitting(true);
+
+
         //console.log(registerData);
-        await registerUser(registerData.username ,registerData.email, registerData.password);
+        //await registerUser(registerData.username ,registerData.email, registerData.password);
 
     }
 
@@ -92,6 +102,11 @@ const RegisterScreen = () => {
                         </TouchableOpacity>
                     </View>
                 </View>
+                <Dialog isVisible={dialogVisibility} onBackdropPress={() => setDialogVisibility(false)} overlayStyle={{backgroundColor: "white", borderRadius: 5}}  >
+                    <Dialog.Title title={"Błąd"} />
+                    <Text>Sprawdź poprawność uzupełnienia formularza</Text>
+                    <DialogButton title={"OK"} onPress={() => setDialogVisibility(false)} />
+                </Dialog>
 
                 <StatusBar backgroundColor={"#FF7F11"} translucent={false} style="light" />
             </View>
