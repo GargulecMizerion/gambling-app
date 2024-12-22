@@ -8,7 +8,9 @@ module.exports = {
         secondary: {
           DEFAULT: "#262626"
         },
-        vanilla: "F1FAEE",
+        vanilla: "#F1FAEE",
+        secondaryGray: "#D9D9D9",
+        darkGray: "#262626"
 
       },
     },

@@ -6,6 +6,7 @@ import RegisterScreen from "@/app/(auth)/RegisterScreen";
 import TabNav from "@/app/(screens)/TabNav";
 // lub TabNav, jeśli jest to Tab Navigation
 import "../global.css"
+import ProfileScreen from "@/app/(screens)/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Register" component={RegisterScreen} />
                     <Stack.Screen name="HomePage" component={TabNav} />
+                    <Stack.Screen name="Profile" component={ProfileScreen} />
                 </Stack.Navigator>
         </SafeAreaProvider>
     );
