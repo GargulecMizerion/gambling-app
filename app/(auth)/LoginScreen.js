@@ -1,20 +1,41 @@
 import {View, Text, TouchableOpacity} from 'react-native'
 import React, {useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
-import {Input, Button} from "@rneui/base";
+import {Input, Button, Dialog} from "@rneui/base";
 import {StatusBar} from "expo-status-bar";
 import { useNavigation } from '@react-navigation/native';
+import {DialogActions} from "@rneui/base/dist/Dialog/Dialog.Actions";
+import {DialogButton} from "@rneui/base/dist/Dialog/Dialog.Button";
+import { signIn } from "@/lib/appwrite";
 
 
 const LoginScreen = () => {
-    const [loginData, setLoginData] = useState({username: "", password: ""});
+    const [loginData, setLoginData] = useState({email: "", password: ""});
     const navigation = useNavigation();
+    const [dialogMessage, setDialogMessage] = useState({isVisible: true, message: ""});
+
+    const handleLogin = async () => {
+        if (!loginData.email || !loginData.password) {
+            setDialogMessage({isVisible: true, message: "Uzupełnij wszystkie dane"});
+            return;
+        }
+
+        try {
+            const result = await signIn(loginData.email, loginData.password);
+            navigation.navigate("HomePage")
+        } catch (error){
+            setDialogMessage({isVisible: true, message: error.message});
+        }
+
+
+    }
+
     return (
         <SafeAreaView>
             <View className="flex justify-center w-full h-full bg-primary gap-8">
                 <Text className={"text-center text-secondary text-6xl font-extrabold"}>Gambleo.</Text>
                 <View className="px-5  w-full">
-                <Input placeholder={"Username"} leftIcon={{type: "font-awesome", name: "user"}}       inputStyle={{
+                <Input placeholder={"Email"} leftIcon={{type: "font-awesome", name: "at"}}       inputStyle={{
                     color: 'black', // Kolor tekstu użytkownika
                 }} inputContainerStyle={{
                     borderBottomWidth: 0, // Usunięcie linii
@@ -24,7 +45,7 @@ const LoginScreen = () => {
                     paddingLeft: 15,
                 }}   placeholderTextColor={"black"}
                        cursorColor={"black"}
-                       onChangeText={(e) => setLoginData({...loginData, username: e})} />
+                       onChangeText={(e) => setLoginData({...loginData, email: e})} />
 
                 <Input placeholder={"Password"} leftIcon={{type: "font-awesome", name: "lock"}}       inputStyle={{
                     color: 'black', // Kolor tekstu użytkownika
@@ -39,7 +60,7 @@ const LoginScreen = () => {
                        secureTextEntry={true}
                        onChangeText={(e) => setLoginData({...loginData, password: e})} />
 
-                    <Button title="Login" onPress={() => navigation.navigate("HomePage")} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
+                    <Button title="Login" onPress={() => handleLogin()} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
                     <View className={"flex-row justify-center pt-5 gap-2"}>
                         <Text className={"text-lg text-gray-100"}>
                             Don't have an account?
@@ -53,6 +74,13 @@ const LoginScreen = () => {
 
             </View>
             <StatusBar backgroundColor={"#FF7F11"} translucent={false} style="light" />
+            <Dialog isVisible={dialogMessage.isVisible} overlayStyle={{backgroundColor: "white", borderRadius: 10}} >
+                <Dialog.Title title={"Błąd"}/>
+                <Text>{dialogMessage.message}</Text>
+                <DialogActions>
+                    <DialogButton title={"OK"} onPress={() => setDialogMessage({...dialogMessage, isVisible: false})} />
+                </DialogActions>
+            </Dialog>
         </SafeAreaView>
     )
 }
