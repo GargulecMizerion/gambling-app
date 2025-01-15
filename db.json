@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "user",
       "email": "user@user.com",
       "balance": 100
@@ -10,6 +10,12 @@
       "id": "678177120016089ac3b8",
       "username": "user",
       "email": "user@user.com",
+      "balance": 100
+    },
+    {
+      "id": "6787ef810013d1eb489f",
+      "username": "qwe",
+      "email": "qwe@qwe.qwe",
       "balance": 100
     }
   ],
@@ -362,6 +368,332 @@
         "home": 2.1,
         "away": 2.4,
         "draw": 2.6
+      },
+      "id": "6349"
+    }
+  ],
+  "results": [
+    {
+      "match_id": 1,
+      "home_team": "Manchester United",
+      "away_team": "Fulham",
+      "date": "2024-08-16",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "5ae8"
+    },
+    {
+      "match_id": 2,
+      "home_team": "Ipswich Town",
+      "away_team": "Liverpool",
+      "date": "2024-08-17",
+      "time": "12:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "1af7"
+    },
+    {
+      "match_id": 3,
+      "home_team": "Brighton",
+      "away_team": "Nottingham Forest",
+      "date": "2024-08-17",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "85dd"
+    },
+    {
+      "match_id": 4,
+      "home_team": "Crystal Palace",
+      "away_team": "Leicester City",
+      "date": "2024-08-17",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "ebe9"
+    },
+    {
+      "match_id": 5,
+      "home_team": "Fulham",
+      "away_team": "West Ham",
+      "date": "2024-08-17",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "376b"
+    },
+    {
+      "match_id": 6,
+      "home_team": "Manchester City",
+      "away_team": "Chelsea",
+      "date": "2024-08-18",
+      "time": "16:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "ed0d"
+    },
+    {
+      "match_id": 7,
+      "home_team": "Leicester City",
+      "away_team": "Tottenham Hotspur",
+      "date": "2024-08-19",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "68c0"
+    },
+    {
+      "match_id": 8,
+      "home_team": "Arsenal",
+      "away_team": "Southampton",
+      "date": "2024-08-24",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "ae0e"
+    },
+    {
+      "match_id": 9,
+      "home_team": "Everton",
+      "away_team": "Aston Villa",
+      "date": "2024-08-24",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "1145"
+    },
+    {
+      "match_id": 10,
+      "home_team": "Liverpool",
+      "away_team": "Manchester United",
+      "date": "2024-08-25",
+      "time": "16:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "f303"
+    },
+    {
+      "match_id": 11,
+      "home_team": "West Ham United",
+      "away_team": "Newcastle United",
+      "date": "2024-08-26",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "a89d"
+    },
+    {
+      "match_id": 12,
+      "home_team": "Aston Villa",
+      "away_team": "Brighton",
+      "date": "2024-08-31",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "24c9"
+    },
+    {
+      "match_id": 13,
+      "home_team": "Chelsea",
+      "away_team": "Crystal Palace",
+      "date": "2024-09-01",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "44da"
+    },
+    {
+      "match_id": 14,
+      "home_team": "Tottenham Hotspur",
+      "away_team": "Everton",
+      "date": "2024-09-01",
+      "time": "17:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "3321"
+    },
+    {
+      "match_id": 15,
+      "home_team": "Manchester United",
+      "away_team": "Arsenal",
+      "date": "2024-09-02",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "dba5"
+    },
+    {
+      "match_id": 16,
+      "home_team": "Liverpool",
+      "away_team": "Leicester City",
+      "date": "2024-09-14",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "8e31"
+    },
+    {
+      "match_id": 17,
+      "home_team": "Southampton",
+      "away_team": "Manchester City",
+      "date": "2024-09-15",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "a1cc"
+    },
+    {
+      "match_id": 18,
+      "home_team": "Nottingham Forest",
+      "away_team": "Fulham",
+      "date": "2024-09-15",
+      "time": "17:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "135c"
+    },
+    {
+      "match_id": 19,
+      "home_team": "West Ham United",
+      "away_team": "Tottenham Hotspur",
+      "date": "2024-09-16",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "df84"
+    },
+    {
+      "match_id": 20,
+      "home_team": "Everton",
+      "away_team": "Brighton",
+      "date": "2024-09-21",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "5cc0"
+    },
+    {
+      "match_id": 21,
+      "home_team": "Chelsea",
+      "away_team": "Liverpool",
+      "date": "2024-09-21",
+      "time": "17:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "2bb2"
+    },
+    {
+      "match_id": 22,
+      "home_team": "Manchester United",
+      "away_team": "Newcastle United",
+      "date": "2024-09-22",
+      "time": "16:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "1780"
+    },
+    {
+      "match_id": 23,
+      "home_team": "Arsenal",
+      "away_team": "Aston Villa",
+      "date": "2024-09-23",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "0d33"
+    },
+    {
+      "match_id": 24,
+      "home_team": "Leicester City",
+      "away_team": "Crystal Palace",
+      "date": "2024-09-28",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "a7cd"
+    },
+    {
+      "match_id": 25,
+      "home_team": "Southampton",
+      "away_team": "Ipswich Town",
+      "date": "2024-09-28",
+      "time": "15:00",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "4606"
+    },
+    {
+      "match_id": 26,
+      "home_team": "Manchester City",
+      "away_team": "Nottingham Forest",
+      "date": "2024-09-29",
+      "time": "16:30",
+      "result": {
+        "home": 2,
+        "away": 1
+      },
+      "id": "c9e2"
+    },
+    {
+      "match_id": 27,
+      "home_team": "Brighton",
+      "away_team": "West Ham United",
+      "date": "2024-09-30",
+      "time": "20:00",
+      "result": {
+        "home": 2,
+        "away": 1
       },
       "id": "6349"
     }
