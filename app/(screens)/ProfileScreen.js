@@ -22,11 +22,11 @@ const ProfileScreen = () => {
             </View>
 
             <View className={"flex-row justify-around mb-10 my-10"}>
-                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg mr-2"}>
-                    <Text className={"text-white text-center"}>Wypłać</Text>
-                </TouchableOpacity>
-                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg ml-2"}>
+                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg mr-2"} onPress={() => navigation.navigate("Payment")}>
                     <Text className={"text-white text-center"}>Wpłać</Text>
+                </TouchableOpacity>
+                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg ml-2"} onPress={() => navigation.navigate("Deposit")}>
+                    <Text className={"text-white text-center"}>Wypłać</Text>
                 </TouchableOpacity>
             </View>
 
@@ -37,7 +37,7 @@ const ProfileScreen = () => {
                 <TouchableOpacity className={"bg-secondaryGray py-4 px-5 rounded-lg mb-5"}>
                     <Text className={"text-lg"}>Metody płatności</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className={"bg-secondaryGray py-4 px-5 rounded-lg"}>
+                <TouchableOpacity className={"bg-secondaryGray py-4 px-5 rounded-lg"} onPress={() => navigation.navigate("Notifications")}>
                     <Text className={"text-lg"}>Powiadomienia</Text>
                 </TouchableOpacity>
             </View>

@@ -23,10 +23,14 @@ const NotificationsScreen = () => {
 
     return (
         <View className={"bg-primary h-full p-5"}>
-            <TouchableOpacity onPress={() => {navigation.goBack()}}>
-                <Text className={"absolute text-2xl font-bold"}>X</Text>
-            </TouchableOpacity>
-            <Text className={"text-center text-2xl font-bold mb-5"}>Powiadomienia</Text>
+            <View className={"relative items-center my-10"}>
+                <TouchableOpacity className={"absolute left-0"} onPress={() => navigation.goBack()}>
+                    <Text className={"text-2xl font-bold text-white"}>X</Text>
+                </TouchableOpacity>
+
+                <Text className={"text-2xl"}>Powiadomienia</Text>
+            </View>
+
             <ScrollView className={"flex flex-col gap-2"}>
                 {
                     notifications.length > 0 ? (

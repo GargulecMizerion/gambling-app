@@ -7,6 +7,8 @@ import TabNav from "@/app/(screens)/TabNav";
 // lub TabNav, jeśli jest to Tab Navigation
 import "../global.css"
 import ProfileScreen from "@/app/(screens)/ProfileScreen";
+import DepositScreen from "@/app/(screens)/DepositScreen";
+import PaymentScreen from "@/app/(screens)/PaymentScreen";
 import NotificationsScreen from "@/app/(screens)/NotificationsScreen";
 import {StatusBar} from "expo-status-bar";
 
@@ -21,6 +23,8 @@ export default function App() {
                     <Stack.Screen name="Notifications" component={NotificationsScreen}/>
                     <Stack.Screen name="HomePage" component={TabNav} />
                     <Stack.Screen name="Profile" component={ProfileScreen} />
+                    <Stack.Screen name="Deposit" component={DepositScreen} />
+                    <Stack.Screen name="Payment" component={PaymentScreen} />
                 </Stack.Navigator>
                 <StatusBar backgroundColor={"#FF7F11"}/>
         </SafeAreaProvider>
