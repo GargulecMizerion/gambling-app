@@ -7,18 +7,22 @@ import TabNav from "@/app/(screens)/TabNav";
 // lub TabNav, jeśli jest to Tab Navigation
 import "../global.css"
 import ProfileScreen from "@/app/(screens)/ProfileScreen";
+import NotificationsScreen from "@/app/(screens)/NotificationsScreen";
+import {StatusBar} from "expo-status-bar";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <SafeAreaProvider>
-                <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name="Login" component={LoginScreen} />
-                    <Stack.Screen name="Register" component={RegisterScreen} />
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
+                   {/*<Stack.Screen name="Login" component={LoginScreen} />*/}
+                   {/* <Stack.Screen name="Register" component={RegisterScreen} />*/}
+                    <Stack.Screen name="Notifications" component={NotificationsScreen}/>
                     <Stack.Screen name="HomePage" component={TabNav} />
                     <Stack.Screen name="Profile" component={ProfileScreen} />
                 </Stack.Navigator>
+                <StatusBar backgroundColor={"#FF7F11"}/>
         </SafeAreaProvider>
     );
 }

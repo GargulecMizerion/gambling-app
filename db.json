@@ -697,5 +697,27 @@
       },
       "id": "6349"
     }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "dateTime": "19:00 24.12.2024",
+      "message": "Masz nowy wygrany kupon! Gratulacje!"
+    },
+    {
+      "id": 2,
+      "dateTime": "15:23 23.12.2024",
+      "message": "Niestety, tym razem się nie udało! Kupon przegrany!"
+    },
+    {
+      "id": 3,
+      "dateTime": "17:33 22.12.2024",
+      "message": "Pieniądze wpłynęły na twoje konto!"
+    },
+    {
+      "id": 4,
+      "dateTime": "07:15 21.12.2024",
+      "message": "Pieniądze wypłacone pomyślnie!"
+    }
   ]
 }
