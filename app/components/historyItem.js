@@ -18,7 +18,7 @@ export const HistoryItem = ({amount, odd, status, date}) => {
 
             <View className={"flex-row justify-between"}>
                 <View className={""}>
-                    <Text  className={"text-xl"}>KWOTa: ${amount}</Text>
+                    <Text  className={"text-xl"}>KWOTA: ${amount}</Text>
                     <Text  className={"text-xl"}>KURS: {odd}</Text>
                 </View>
                 <View className={"flex justify-center"}>

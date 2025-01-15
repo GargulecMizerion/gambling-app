@@ -15,7 +15,7 @@ const HistoryScreen = () => {
                        amount: 20,
                        odd: 3.20,
                        status: 0,
-                       date: "25-12-2024"
+                       date: "26-12-2024"
                    })}
                 </View>
 
