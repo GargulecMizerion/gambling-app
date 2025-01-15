@@ -16,7 +16,7 @@ export const tabNavHeader = () => {
                 <View  className={"flex-row gap-4 bg-secondaryGray rounded-4xl items-center justify-center p-2 rounded-3xl"}>
                     <TouchableOpacity
                         className={"border-2 border-darkGray rounded-full p-1"}
-                        onPress={() => navigation.navigate("")}
+                        onPress={() => navigation.navigate("Payment")}
                     >
                         <FontAwesome6Icon name={"plus"} size={15} />
                     </TouchableOpacity>
