@@ -60,7 +60,8 @@ const LoginScreen = () => {
                        secureTextEntry={true}
                        onChangeText={(e) => setLoginData({...loginData, password: e})} />
 
-                    <Button title="Login" onPress={() => handleLogin()} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
+                                           {/*onPress={() => handleLogin()}*/}
+                    <Button title="Login" onPress={() => navigation.navigate("HomePage")} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
                     <View className={"flex-row justify-center pt-5 gap-2"}>
                         <Text className={"text-lg text-gray-100"}>
                             Don't have an account?

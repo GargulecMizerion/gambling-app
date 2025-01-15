@@ -18,13 +18,13 @@ export default function App() {
     return (
         <SafeAreaProvider>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
-                   {/*<Stack.Screen name="Login" component={LoginScreen} />*/}
-                   {/* <Stack.Screen name="Register" component={RegisterScreen} />*/}
-                    <Stack.Screen name="Notifications" component={NotificationsScreen}/>
+                    <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="Register" component={RegisterScreen} />
                     <Stack.Screen name="HomePage" component={TabNav} />
                     <Stack.Screen name="Profile" component={ProfileScreen} />
                     <Stack.Screen name="Deposit" component={DepositScreen} />
                     <Stack.Screen name="Payment" component={PaymentScreen} />
+                    <Stack.Screen name="Notifications" component={NotificationsScreen}/>
                 </Stack.Navigator>
                 <StatusBar backgroundColor={"#FF7F11"}/>
         </SafeAreaProvider>
