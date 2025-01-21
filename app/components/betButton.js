@@ -7,8 +7,7 @@ const BetButton = ({team, prediction}) => {
         <TouchableOpacity>
 
             <Text className={"text-white text-center"}>{team}</Text>
-            {console.log(1)
-            }
+
             <Text className={"text-white text-2xl text-center"}>{prediction}</Text>
 
         </TouchableOpacity>
