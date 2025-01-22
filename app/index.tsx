@@ -11,12 +11,14 @@ import DepositScreen from "@/app/(screens)/DepositScreen";
 import PaymentScreen from "@/app/(screens)/PaymentScreen";
 import NotificationsScreen from "@/app/(screens)/NotificationsScreen";
 import {StatusBar} from "expo-status-bar";
+import {UserProvider} from "@/context/UserContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <SafeAreaProvider>
+            <UserProvider>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Login" component={LoginScreen} />
                     <Stack.Screen name="Register" component={RegisterScreen} />
@@ -27,6 +29,7 @@ export default function App() {
                     <Stack.Screen name="Notifications" component={NotificationsScreen}/>
                 </Stack.Navigator>
                 <StatusBar backgroundColor={"#FF7F11"}/>
+            </UserProvider>
         </SafeAreaProvider>
     );
 }

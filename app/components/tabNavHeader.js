@@ -1,12 +1,12 @@
 import {View, Text, TouchableOpacity} from "react-native";
-import React from "react";
+import React, {useContext} from "react";
 import FontAwesome6Icon from "react-native-vector-icons/FontAwesome6";
 import {useNavigation} from "@react-navigation/native";
+import {UserContext} from "@/context/UserContext";
 
 
 
-export const tabNavHeader = () => {
-
+export const tabNavHeader = ({balance}) => {
     const navigation = useNavigation();
 
     return (
@@ -20,7 +20,7 @@ export const tabNavHeader = () => {
                     >
                         <FontAwesome6Icon name={"plus"} size={15} />
                     </TouchableOpacity>
-                    <Text className={"text-lg leading-none"}>$25.37</Text>
+                    <Text className={"text-lg leading-none"}>${"" + balance}</Text>
                 </View>
                 <TouchableOpacity
                     className={"border-2 border-darkGray rounded-full p-2"}

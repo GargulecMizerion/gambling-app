@@ -1,22 +1,11 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "user",
-      "email": "user@user.com",
-      "balance": 100
-    },
-    {
-      "id": "678177120016089ac3b8",
-      "username": "user",
-      "email": "user@user.com",
-      "balance": 100
-    },
-    {
-      "id": "6787ef810013d1eb489f",
-      "username": "qwe",
-      "email": "qwe@qwe.qwe",
-      "balance": 100
+      "id": "6791387a001648bc40fa",
+      "username": "kayman",
+      "email": "kayman@gmail.com",
+      "password": "kayman123",
+      "balance": 180
     }
   ],
   "matches": [
@@ -700,22 +689,22 @@
   ],
   "notifications": [
     {
-      "id": 1,
+      "id": "1",
       "dateTime": "19:00 24.12.2024",
       "message": "Masz nowy wygrany kupon! Gratulacje!"
     },
     {
-      "id": 2,
+      "id": "2",
       "dateTime": "15:23 23.12.2024",
       "message": "Niestety, tym razem się nie udało! Kupon przegrany!"
     },
     {
-      "id": 3,
+      "id": "3",
       "dateTime": "17:33 22.12.2024",
       "message": "Pieniądze wpłynęły na twoje konto!"
     },
     {
-      "id": 4,
+      "id": "4",
       "dateTime": "07:15 21.12.2024",
       "message": "Pieniądze wypłacone pomyślnie!"
     }

@@ -6,11 +6,13 @@ import HistoryScreen from "@/app/(screens)/HistoryScreen";
 import BetScreen from "@/app/(screens)/BetScreen";
 import ResultsScreen from "@/app/(screens)/ResultsScreen";
 import {Icon} from "react-native-vector-icons";
+import {UserProvider} from "@/context/UserContext";
 
 const Tab = createBottomTabNavigator();
 
 const TabNav = () => {
     return (
+
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 headerShown: false,
@@ -38,6 +40,7 @@ const TabNav = () => {
             <Tab.Screen name={"Bet"} component={BetScreen} />
             <Tab.Screen name={"Results"} component={ResultsScreen} />
         </Tab.Navigator>
+
     )
 }
 export default TabNav

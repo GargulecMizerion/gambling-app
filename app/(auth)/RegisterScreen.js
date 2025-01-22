@@ -23,7 +23,7 @@ const RegisterScreen = () => {
 
         console.log(registerData);
         await registerUser(registerData.username ,registerData.email, registerData.password);
-
+        setRegisterData({ username: "", email: "", password: "" })
     }
 
     return (

@@ -1,14 +1,16 @@
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import React, { useState, useCallback } from 'react';
+import React, {useState, useCallback, useContext} from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {UserContext} from "@/context/UserContext";
 
 const ProfileScreen = () => {
     const navigation = useNavigation();
     const balance = 23.41;
     const [profileImage, setProfileImage] = useState(null); // State na zdjęcie profilowe
+    const {user, signOut} = useContext(UserContext);
 
     // Funkcja do załadowania zapisanego zdjęcia z AsyncStorage
     const loadProfileImage = async () => {
@@ -82,7 +84,7 @@ const ProfileScreen = () => {
             </View>
 
             <View className={"flex items-center"}>
-                <Text className={"text-5xl font-bold text-white"}>$ {balance.toFixed(2)}</Text>
+                <Text className={"text-5xl font-bold text-white"}>$ {user.balance.toFixed(2)}</Text>
             </View>
 
             <View className={"flex-row justify-around mb-10 my-10"}>
@@ -114,10 +116,17 @@ const ProfileScreen = () => {
                     <Text className={"text-lg"}>Powiadomienia</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    className={"bg-secondaryGray py-4 px-5 rounded-lg"}
+                    className={"bg-secondaryGray py-4 px-5 rounded-lg mb-5"}
                     onPress={handleChangeProfilePicture}
                 >
                     <Text className={"text-lg"}>Zmień zdjęcie profilowe</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    className={"bg-secondaryGray py-4 px-5 rounded-lg"}
+                    onPress={signOut}
+                >
+                    <Text className={"text-lg"}>Wyloguj</Text>
                 </TouchableOpacity>
             </View>
         </View>

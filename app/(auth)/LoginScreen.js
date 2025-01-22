@@ -1,19 +1,21 @@
 import {View, Text, TouchableOpacity} from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import {Input, Button, Dialog} from "@rneui/base";
 import {StatusBar} from "expo-status-bar";
 import { useNavigation } from '@react-navigation/native';
 import {DialogActions} from "@rneui/base/dist/Dialog/Dialog.Actions";
 import {DialogButton} from "@rneui/base/dist/Dialog/Dialog.Button";
-import { signIn } from "@/lib/appwrite";
+import {signIn} from "@/api/api";
+import {UserContext} from "@/context/UserContext";
+
 
 
 const LoginScreen = () => {
     const [loginData, setLoginData] = useState({email: "", password: ""});
     const navigation = useNavigation();
-    const [dialogMessage, setDialogMessage] = useState({isVisible: true, message: ""});
-
+    const [dialogMessage, setDialogMessage] = useState({isVisible: false, message: ""});
+    const {contextSignIn} = useContext(UserContext);
     const handleLogin = async () => {
         if (!loginData.email || !loginData.password) {
             setDialogMessage({isVisible: true, message: "Uzupełnij wszystkie dane"});
@@ -22,9 +24,20 @@ const LoginScreen = () => {
 
         try {
             const result = await signIn(loginData.email, loginData.password);
-            navigation.navigate("HomePage")
-        } catch (error){
+            console.log(result);
+            if (result){
+                contextSignIn(result);
+
+                navigation.navigate("HomePage")
+
+
+            }
+        }
+
+        catch (error){
             setDialogMessage({isVisible: true, message: error.message});
+        } finally {
+            setLoginData({email: "", password: ""})
         }
 
 
@@ -61,7 +74,7 @@ const LoginScreen = () => {
                        onChangeText={(e) => setLoginData({...loginData, password: e})} />
 
                                            {/*onPress={() => handleLogin()}*/}
-                    <Button title="Login" onPress={() => navigation.navigate("HomePage")} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
+                    <Button title="Login" onPress={() => handleLogin()} containerStyle={{paddingHorizontal: 10, borderRadius: 0}} color={"#262626"} style={{paddingHorizontal: 10, borderRadius: 50}} />
                     <View className={"flex-row justify-center pt-5 gap-2"}>
                         <Text className={"text-lg text-gray-100"}>
                             Don't have an account?
