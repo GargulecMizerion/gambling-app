@@ -69,6 +69,14 @@ const ProfileScreen = () => {
         }
     };
 
+    const handleSignOut = () => {
+        signOut();
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }], // Ustaw `Login` jako jedyną trasę w stosie
+        });
+    }
+
     return (
         <View className={"w-full p-5 bg-primary h-full"}>
             <Image
@@ -84,7 +92,7 @@ const ProfileScreen = () => {
             </View>
 
             <View className={"flex items-center"}>
-                <Text className={"text-5xl font-bold text-white"}>$ {user.balance.toFixed(2)}</Text>
+                <Text className={"text-5xl font-bold text-white"}>$ {user?.balance.toFixed(2)}</Text>
             </View>
 
             <View className={"flex-row justify-around mb-10 my-10"}>
@@ -124,7 +132,7 @@ const ProfileScreen = () => {
 
                 <TouchableOpacity
                     className={"bg-secondaryGray py-4 px-5 rounded-lg"}
-                    onPress={signOut}
+                    onPress={handleSignOut}
                 >
                     <Text className={"text-lg"}>Wyloguj</Text>
                 </TouchableOpacity>
