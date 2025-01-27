@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { View, Text, ScrollView, Platform } from 'react-native';
 import { Button } from '@rneui/base';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import { tabNavHeader } from '@/app/components/tabNavHeader';
+import {UserContext} from "@/context/UserContext";
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -15,6 +16,7 @@ Notifications.setNotificationHandler({
 
 const BetScreen = () => {
     const [expoPushToken, setExpoPushToken] = useState('');
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
@@ -61,7 +63,7 @@ const BetScreen = () => {
 
     return (
         <View className="w-full bg-primary h-full">
-            <View className="p-5">{tabNavHeader()}</View>
+            <View className="p-5">{tabNavHeader({balance: user?.balance})}</View>
 
             <ScrollView />
 

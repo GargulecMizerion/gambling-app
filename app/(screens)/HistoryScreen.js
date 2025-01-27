@@ -1,14 +1,16 @@
 import {View, Text, ScrollView, ActivityIndicator} from 'react-native'
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import {tabNavHeader} from "@/app/components/tabNavHeader";
 import {homeItem} from "@/app/components/homeItem";
 import historyItem from "@/app/components/historyItem";
+import {UserContext} from "@/context/UserContext";
 
 const HistoryScreen = () => {
+    const {user} = useContext(UserContext);
     return (
         <>
             <View className={"w-full p-5 bg-primary h-full"}>
-                {tabNavHeader()}
+                {tabNavHeader({balance: user?.balance})}
                 <ScrollView>
                     {historyItem({
                         amount: 20,

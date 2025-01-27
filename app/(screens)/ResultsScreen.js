@@ -1,11 +1,13 @@
 import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { resultItem } from "@/app/components/resultItem";
 import { tabNavHeader } from "@/app/components/tabNavHeader";
 import axios from 'axios';
+import {UserContext} from "@/context/UserContext";
 
 const ResultsScreen = () => {
     const [results, setResults] = useState([]);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -23,7 +25,7 @@ const ResultsScreen = () => {
     return (
         <>
                 <View className={"w-full p-5 bg-primary h-full"}>
-                    {tabNavHeader()}
+                    {tabNavHeader({balance: user?.balance})}
                     <ScrollView>
                     {results.length > 0 ? ( // Poprawiono warunek na operator trójargumentowy
                         results.map((item, index) => (
