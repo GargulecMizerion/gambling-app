@@ -10,6 +10,16 @@ export const getEvents = async () => {
     }
 }
 
+export const getEvent = async (id) => {
+    try {
+        const response = await axios.get(`http://10.0.2.2:3000/matches/${id}`);
+        return response.data;
+    } catch (e) {
+        console.error('Error fetching matches:', error);
+        return null;
+    }
+}
+
 export const signIn = async (email, password) => {
     try {
         const response = await axios.get('http://10.0.2.2:3000/users', {

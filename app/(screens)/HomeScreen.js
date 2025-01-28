@@ -4,10 +4,12 @@ import { homeItem } from "@/app/components/homeItem";
 import { tabNavHeader } from "@/app/components/tabNavHeader";
 import { getEvents } from "@/api/api";
 import { UserContext } from "@/context/UserContext";
+import {PredictionsContext} from "@/app/(screens)/TabNav";
 
 const HomeScreen = () => {
     const [matches, setMatches] = useState([]);
     const [loading, setLoading] = useState(true); // Dodano stan ładowania
+    const { userPredictions, setUserPredictions } = useContext(PredictionsContext);
     const { user } = useContext(UserContext);
 
     useEffect(() => {
@@ -35,6 +37,10 @@ const HomeScreen = () => {
         };
     }, []);
 
+    const handlePrediction = (id, prediction) => {
+        setUserPredictions({...userPredictions, [id]: prediction});
+    };
+
     return (
         <View className={"w-full p-5 bg-primary h-full"}>
             {tabNavHeader({balance: user?.balance})} {/* Przykładowe użycie user.balance */}
@@ -53,6 +59,8 @@ const HomeScreen = () => {
                                 time: item.time,
                                 awayTeam: item.away_team,
                                 predictions: item.predictions,
+                                id: item.id,
+                                onPress: handlePrediction
                             })}
                         </View>
                     ))

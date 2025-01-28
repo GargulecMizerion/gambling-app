@@ -1,11 +1,34 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Input } from "@rneui/base";
-import React from 'react';
+import React, {useContext, useState} from 'react';
+import {UserContext} from "@/context/UserContext";
+import axios from "axios";
+import {signIn} from "@/api/api";
 
 const DepositScreen = () => {
+    const [value, setValue] = useState(0);
     const navigation = useNavigation();
-    const balance = 27.41;
+    const { user, contextSignIn } = useContext(UserContext);
+
+    const handlePayment = async () => {
+        if (user.balance - value >= 0) {
+            const response = await axios.patch("http://10.0.2.2:3000/users/" + user?.id, {balance: user.balance - value});
+            console.log(response);
+            const result = await signIn(user.email, user.password);
+            console.log(result);
+            if (result){
+                await contextSignIn(result);
+
+                navigation.navigate("HomePage")
+
+
+            }
+        }
+
+
+
+    }
 
     return (
         <View className={"w-full p-5 bg-primary h-full"}>
@@ -15,16 +38,17 @@ const DepositScreen = () => {
                     <Text className={"text-2xl font-bold text-white"}>X</Text>
                 </TouchableOpacity>
 
-                <Text className={"text-2xl"}>Depozyt</Text>
+                <Text className={"text-2xl"}>Wpłata</Text>
             </View>
 
             <View className={"flex items-center"}>
-                <Text className={"text-5xl font-bold text-white"}>$ {balance.toFixed(2)}</Text>
+                <Text className={"text-5xl font-bold text-white"}>$ {user?.balance.toFixed(2).toString()}</Text>
             </View>
 
             <View className={"my-10"}>
                 <Input
-                    placeholder={"Kwota"}
+                    placeholder={value ?  value.toString() : "Kwota"}
+                    onChangeText={(t) => setValue(parseInt(t))}
                     keyboardType="numeric"
                     leftIcon={{type: "font-awesome", name: "dollar"}}
                     inputStyle={{
@@ -39,12 +63,13 @@ const DepositScreen = () => {
                     }}
                     placeholderTextColor={"black"}
                     cursorColor={"black"}
+
                 />
             </View>
 
             <View className={"flex-row"}>
-                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg"}>
-                    <Text className={"text-white text-center"}>Depozyt</Text>
+                <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg"} onPress={handlePayment}>
+                    <Text className={"text-white text-center"}>Wpłać</Text>
                 </TouchableOpacity>
             </View>
 
