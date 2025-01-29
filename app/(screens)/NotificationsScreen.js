@@ -1,19 +1,23 @@
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native'
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {useNavigation} from "@react-navigation/native";
 import notificationItem from "@/app/components/notificationItem";
 import axios from "axios";
 import {StatusBar} from "expo-status-bar";
+import {UserContext} from "@/context/UserContext";
+import {getNotifications} from "@/api/api";
 
 const NotificationsScreen = () => {
     const [notifications, setNotifications] = useState([])
     const navigation = useNavigation();
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await axios.get('http://10.0.2.2:3000/notifications');
-                setNotifications(response.data);
+
+                const response = await getNotifications(user.id);
+                setNotifications(response);
             } catch (error) {
                 console.error('Error fetching notifications:', error);
             }

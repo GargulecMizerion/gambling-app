@@ -5,7 +5,7 @@
       "username": "kayman",
       "email": "kayman@gmail.com",
       "password": "kayman123",
-      "balance": 160
+      "balance": 190
     }
   ],
   "matches": [
@@ -690,22 +690,38 @@
   "notifications": [
     {
       "id": "1",
+      "userId": "1",
       "dateTime": "19:00 24.12.2024",
       "message": "Masz nowy wygrany kupon! Gratulacje!"
     },
     {
       "id": "2",
+      "userId": "6791387a001648bc40fa",
       "dateTime": "15:23 23.12.2024",
       "message": "Niestety, tym razem się nie udało! Kupon przegrany!"
     },
     {
       "id": "3",
+      "userId": "6791387a001648bc40fa",
       "dateTime": "17:33 22.12.2024",
       "message": "Pieniądze wpłynęły na twoje konto!"
     },
     {
       "id": "4",
+      "userId": "6791387a001648bc40fa",
       "dateTime": "07:15 21.12.2024",
+      "message": "Pieniądze wypłacone pomyślnie!"
+    },
+    {
+      "id": "86b7",
+      "userId": "6791387a001648bc40fa",
+      "dateTime": "20:23 29.01.2025",
+      "message": "Pieniądze wpłacone pomyślnie!"
+    },
+    {
+      "id": "8bcc",
+      "userId": "6791387a001648bc40fa",
+      "dateTime": "20:33 29.01.2025",
       "message": "Pieniądze wypłacone pomyślnie!"
     }
   ]

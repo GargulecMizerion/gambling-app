@@ -4,7 +4,7 @@ import { Input } from "@rneui/base";
 import React, {useContext, useState} from 'react';
 import {UserContext} from "@/context/UserContext";
 import axios from "axios";
-import {signIn} from "@/api/api";
+import {addNotification, signIn} from "@/api/api";
 
 const PaymentScreen = () => {
     const [value, setValue] = useState(0);
@@ -19,11 +19,10 @@ const PaymentScreen = () => {
         console.log(result);
         if (result){
             await contextSignIn(result);
-
             navigation.navigate("HomePage")
-
-
         }
+
+        await addNotification(user.id, "Pieniądze wpłacone pomyślnie!")
     }
 
     return (

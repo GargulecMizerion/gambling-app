@@ -4,7 +4,7 @@ import { Input } from "@rneui/base";
 import React, {useContext, useState} from 'react';
 import {UserContext} from "@/context/UserContext";
 import axios from "axios";
-import {signIn} from "@/api/api";
+import {addNotification, signIn} from "@/api/api";
 
 const DepositScreen = () => {
     const [value, setValue] = useState(0);
@@ -19,11 +19,10 @@ const DepositScreen = () => {
             console.log(result);
             if (result){
                 await contextSignIn(result);
-
                 navigation.navigate("HomePage")
-
-
             }
+
+            await addNotification(user.id, "Pieniądze wypłacone pomyślnie!")
         }
 
 
@@ -38,7 +37,7 @@ const DepositScreen = () => {
                     <Text className={"text-2xl font-bold text-white"}>X</Text>
                 </TouchableOpacity>
 
-                <Text className={"text-2xl"}>Wpłata</Text>
+                <Text className={"text-2xl"}>Depozyt</Text>
             </View>
 
             <View className={"flex items-center"}>
@@ -69,7 +68,7 @@ const DepositScreen = () => {
 
             <View className={"flex-row"}>
                 <TouchableOpacity className={"bg-black flex-1 py-3 rounded-lg"} onPress={handlePayment}>
-                    <Text className={"text-white text-center"}>Wpłać</Text>
+                    <Text className={"text-white text-center"}>Wypłać</Text>
                 </TouchableOpacity>
             </View>
 

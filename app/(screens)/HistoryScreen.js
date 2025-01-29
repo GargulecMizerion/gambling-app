@@ -9,7 +9,7 @@ const HistoryScreen = () => {
     const {user} = useContext(UserContext);
     return (
         <>
-            <View className={"w-full p-5 bg-primary h-full"}>
+            <View className={"w-full px-5 bg-primary h-full"}>
                 {tabNavHeader({balance: user?.balance})}
                 <ScrollView>
                     {historyItem({

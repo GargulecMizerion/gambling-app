@@ -22,7 +22,7 @@ const BetScreen = () => {
     const [amount, setAmount] = useState(0);
 
     const { user } = useContext(UserContext);
-    const { userPredictions } = useContext(PredictionsContext);
+    const { userPredictions, setUserPredictions } = useContext(PredictionsContext);
 
     const multiplier = Object.keys(userPredictions).reduce((acc, key) => acc * userPredictions[key], 1);
     const prize = multiplier * amount;
@@ -78,11 +78,19 @@ const BetScreen = () => {
         });
     }
 
+
+    const deleteItem = (i) => {
+        const temp = events;
+        console.log(temp);
+        temp.splice(i, 1);
+        setUserPredictions(temp);
+        setEvents(temp);
+    }
+
     return (
         <View className="w-full bg-primary h-full">
             <View className="p-5">{tabNavHeader({ balance: user?.balance })}</View>
-
-            <ScrollView>
+            <ScrollView className={"px-5"}>
                 {events.map((match, index) => (
                     betItem({
                         key: index,
@@ -90,8 +98,10 @@ const BetScreen = () => {
                         homeTeam: match.home_team,
                         time: match.time,
                         awayTeam: match.away_team,
-                        prediction: userPredictions[match.id]})
-
+                        prediction: userPredictions[match.id],
+                        index: index,
+                        deleteItem: deleteItem}
+                    )
                 ))}
             </ScrollView>
 
