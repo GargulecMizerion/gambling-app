@@ -17,10 +17,7 @@ const RegisterScreen = () => {
         if (!registerData.username || !registerData.password || !registerData.email) {
             setDialogVisibility(true);
         }
-
         setIsSubmitting(true);
-
-
         console.log(registerData);
         await registerUser(registerData.username ,registerData.email, registerData.password);
         setRegisterData({ username: "", email: "", password: "" })

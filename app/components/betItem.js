@@ -2,7 +2,7 @@ import {Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export  const betItem = ({date, homeTeam, time, awayTeam, itemId,deleteItem}) => {
+export  const betItem = ({date, homeTeam, time, awayTeam, prediction, itemId,deleteItem}) => {
     return (
         <View  className={" w-full rounded-xl bg-secondaryGray p-[10px] my-2 text-black"}>
             <View className={"flex-row  justify-between"}>
@@ -15,6 +15,9 @@ export  const betItem = ({date, homeTeam, time, awayTeam, itemId,deleteItem}) =>
                 <Text className={"text-2xl font-bold flex-1 text-center"}>{homeTeam}</Text>
                 <Text className={"text-3xl font-bold flex-1 text-center"}>{time}</Text>
                 <Text className={"text-2xl   font-bold flex-1 text-center"}>{awayTeam}</Text>
+            </View>
+            <View className={"w-full mt-4 bg-black p-[10px] rounded-lg"}>
+                <Text className={"text-center text-white text-2xl font-bold"}>Kurs: {prediction}</Text>
             </View>
         </View>
     )

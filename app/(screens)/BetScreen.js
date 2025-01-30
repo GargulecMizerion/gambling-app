@@ -24,8 +24,9 @@ const BetScreen = () => {
     const { user } = useContext(UserContext);
     const { userPredictions, setUserPredictions } = useContext(PredictionsContext);
 
-    const multiplier = Object.keys(userPredictions).reduce((acc, key) => acc * userPredictions[key], 1);
-    const prize = multiplier * amount;
+    const multiplier = Object.keys(userPredictions).reduce(
+        (acc, key) => acc * (userPredictions[key] || 1), 1
+    );    const prize = multiplier * amount;
 
     useEffect(() => {
         const fetchItems = async () => {
@@ -80,12 +81,21 @@ const BetScreen = () => {
 
 
     const deleteItem = (i) => {
-        const temp = events;
-        console.log(temp);
-        temp.splice(i, 1);
-        setUserPredictions(temp);
-        setEvents(temp);
-    }
+        const newEvents = [...events]; // Kopia tablicy
+        newEvents.splice(i, 1);
+
+        const newUserPredictions = { ...userPredictions };
+
+        delete newUserPredictions[i];
+
+
+
+        console.log(i);
+
+        setEvents(newEvents);
+        setUserPredictions(newUserPredictions);
+    };
+
 
     return (
         <View className="w-full bg-primary h-full">
@@ -99,7 +109,7 @@ const BetScreen = () => {
                         time: match.time,
                         awayTeam: match.away_team,
                         prediction: userPredictions[match.id],
-                        index: index,
+                        itemId: match.id,
                         deleteItem: deleteItem}
                     )
                 ))}
@@ -126,8 +136,12 @@ const BetScreen = () => {
                         onChangeText={(t) => setAmount(parseFloat(t) || 0)}
                     />
                 </View>
-                <Text className="text-white text-lg font-bold mr-4">x {multiplier.toFixed(2)}</Text>
-                <Text className="text-white text-lg font-bold">${prize.toFixed(2)}</Text>
+                <Text className="text-white text-lg font-bold mr-4">
+                    x {isNaN(multiplier) ? "1.00" : multiplier.toFixed(2)}
+                </Text>
+                <Text className="text-white text-lg font-bold">
+                    ${isNaN(prize) ? "0.00" : prize.toFixed(2)}
+                </Text>
                 <Button title="BET" onPress={multiplier > 1 ? sendPushNotification : () => console.log("Zakład nie mozliwy")} />
             </View>
         </View>

@@ -20,7 +20,9 @@ export const tabNavHeader = ({balance}) => {
                     >
                         <FontAwesome6Icon name={"plus"} size={15} />
                     </TouchableOpacity>
-                    <Text className={"text-lg leading-none"}>${"" + balance.toFixed(2)}</Text>
+                    <Text className="text-lg leading-none">
+                        ${balance ? balance.toFixed(2) : "0.00"}
+                    </Text>
                 </View>
                 <TouchableOpacity
                     className={"border-2 border-darkGray rounded-full p-2"}

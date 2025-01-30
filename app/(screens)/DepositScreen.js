@@ -21,12 +21,8 @@ const DepositScreen = () => {
                 await contextSignIn(result);
                 navigation.navigate("HomePage")
             }
-
             await addNotification(user.id, "Pieniądze wypłacone pomyślnie!")
         }
-
-
-
     }
 
     return (

@@ -18,8 +18,6 @@ const HistoryScreen = () => {
                         status: 0,
                         date: "26-12-2024"
                     })}
-
-
                 </ScrollView>
             </View>
         </>

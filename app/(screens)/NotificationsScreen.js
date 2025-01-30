@@ -15,7 +15,6 @@ const NotificationsScreen = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-
                 const response = await getNotifications(user.id);
                 setNotifications(response);
             } catch (error) {

@@ -21,26 +21,18 @@ const LoginScreen = () => {
             setDialogMessage({isVisible: true, message: "Uzupełnij wszystkie dane"});
             return;
         }
-
         try {
             const result = await signIn(loginData.email, loginData.password);
             console.log(result);
             if (result){
                 contextSignIn(result);
-
                 navigation.navigate("HomePage")
-
-
             }
-        }
-
-        catch (error){
+        }catch (error){
             setDialogMessage({isVisible: true, message: error.message});
         } finally {
             setLoginData({email: "", password: ""})
         }
-
-
     }
 
     return (

@@ -14,14 +14,12 @@ const PaymentScreen = () => {
     const handlePayment = async () => {
         const response = await axios.patch("http://10.0.2.2:3000/users/" + user?.id, {balance: user.balance + value});
         console.log(response);
-
         const result = await signIn(user.email, user.password);
         console.log(result);
         if (result){
             await contextSignIn(result);
             navigation.navigate("HomePage")
         }
-
         await addNotification(user.id, "Pieniądze wpłacone pomyślnie!")
     }
 

@@ -13,7 +13,7 @@ const HomeScreen = () => {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        let isMounted = true; // Flaga do kontroli unmountowania komponentu
+        let isMounted = true;
 
         const fetchMatches = async () => {
             try {
@@ -33,7 +33,7 @@ const HomeScreen = () => {
         fetchMatches();
 
         return () => {
-            isMounted = false; // Zmieniamy flagę na false podczas unmountu
+            isMounted = false;
         };
     }, []);
 
