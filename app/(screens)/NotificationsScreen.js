@@ -5,7 +5,7 @@ import notificationItem from "@/app/components/notificationItem";
 import axios from "axios";
 import {StatusBar} from "expo-status-bar";
 import {UserContext} from "@/context/UserContext";
-import {getNotifications} from "@/api/api";
+import {deleteNotification, getNotifications} from "@/api/api";
 
 const NotificationsScreen = () => {
     const [notifications, setNotifications] = useState([])
@@ -24,6 +24,13 @@ const NotificationsScreen = () => {
         fetchNotifications();
     },[])
 
+    const handleDelete = async (id) => {
+        console.log(id)
+        await deleteNotification(id);
+        const response = await getNotifications(user.id);
+        setNotifications(response);
+    }
+
     return (
         <View className={"bg-primary h-full p-5"}>
             <View className={"relative items-center my-10"}>
@@ -39,10 +46,10 @@ const NotificationsScreen = () => {
                     notifications.length > 0 ? (
                         notifications.map((notification) => (
                             <View key={notification.id}>
-                                {notificationItem({dateTime: notification.dateTime, message: notification.message})}
+                                {notificationItem({dateTime: notification.dateTime, message: notification.message, itemId: notification.id, deleteItem: handleDelete})}
                             </View>
                         ))
-                    ) : (<Text>Brak powiaomień</Text>)
+                    ) : (<Text className={"text-center text-2xl font-extrabold"}>Brak powiadomień</Text>)
                 }
             </ScrollView>
 

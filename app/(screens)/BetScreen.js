@@ -6,7 +6,8 @@ import { tabNavHeader } from '@/app/components/tabNavHeader';
 import { UserContext } from "@/context/UserContext";
 import { PredictionsContext } from "@/app/(screens)/TabNav";
 import { betItem } from "@/app/components/betItem";
-import { getEvent } from "@/api/api";
+import {addNotification, getEvent, signIn, updateHistory} from "@/api/api";
+import axios from "axios";
 
 Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -21,7 +22,7 @@ const BetScreen = () => {
     const [events, setEvents] = useState([]);
     const [amount, setAmount] = useState(0);
 
-    const { user } = useContext(UserContext);
+    const { user, contextSignIn } = useContext(UserContext);
     const { userPredictions, setUserPredictions } = useContext(PredictionsContext);
 
     const multiplier = Object.keys(userPredictions).reduce(
@@ -40,7 +41,7 @@ const BetScreen = () => {
 
         fetchItems();
         registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-    }, [userPredictions]);
+    }, );
 
     async function registerForPushNotificationsAsync() {
         let token;
@@ -83,18 +84,72 @@ const BetScreen = () => {
     const deleteItem = (i) => {
         const newEvents = [...events]; // Kopia tablicy
         newEvents.splice(i, 1);
-
         const newUserPredictions = { ...userPredictions };
-
         delete newUserPredictions[i];
-
-
-
         console.log(i);
-
         setEvents(newEvents);
         setUserPredictions(newUserPredictions);
     };
+
+    const handleBet = async () => {
+        if (amount <= 0 || isNaN(amount)) {
+            alert("Podaj poprawną stawkę!");
+            setAmount(0);
+            return;
+        }
+
+        if (user?.balance < amount) {
+            alert("Nie masz wystarczających środków!");
+            return;
+        }
+
+        try {
+            // Sprawdzenie, czy multiplier i prize są liczbami
+            const validMultiplier = isNaN(multiplier) ? 1 : multiplier;  // Domyślnie ustawiamy 1 jeśli multiplier jest NaN
+            const validPrize = isNaN(prize) ? 0 : prize;  // Ustawiamy 0 jeśli prize jest NaN
+
+            console.log("🔹 Wywołuję addNotification...");
+            await addNotification(
+                user.id,
+                `Nowy kupon z kursem ${validMultiplier.toFixed(2)} został zarejestrowany! Możliwa wygrana to $${validPrize.toFixed(2)}`
+            );
+            console.log("✅ Powiadomienie dodane!");
+
+            console.log("🔹 Próbuję dodać historię zakładu...", {
+                amount: validPrize.toFixed(2),
+                odd: validMultiplier.toFixed(2),
+                userId: user.id
+            });
+
+            await updateHistory({
+                amount: validPrize,
+                odd: validMultiplier,
+                userId: user.id
+            });
+
+            console.log("✅ Historia zakładu została zaktualizowana!");
+
+
+
+            // Aktualizacja salda użytkownika
+            const response = await axios.patch("http://10.0.2.2:3000/users/" + user?.id, {balance: user.balance - amount});
+            const result = await signIn(user.email, user.password);
+            console.log(result);
+            if (result) {
+                await contextSignIn(result);
+            }
+
+            // Resetowanie stanu po postawieniu zakładu
+            setAmount(0);
+            setEvents([]);
+            setUserPredictions({});
+        } catch (error) {
+            console.error("❌ Błąd podczas obstawiania zakładu:", error);
+        }
+    };
+
+
+
 
 
     return (
@@ -118,6 +173,7 @@ const BetScreen = () => {
             <View className="absolute bottom-0 w-full bg-gray-800 p-4 flex-row items-center justify-center gap-5">
                 <View className="flex-1 items-center justify-center pt-5">
                     <Input
+                        value={amount === 0 ? "" : amount.toString()}
                         placeholder={"Stawka"}
                         keyboardType="numeric"
                         leftIcon={{ type: "font-awesome", name: "dollar" }}
@@ -133,7 +189,7 @@ const BetScreen = () => {
                         }}
                         placeholderTextColor={"black"}
                         cursorColor={"black"}
-                        onChangeText={(t) => setAmount(parseFloat(t) || 0)}
+                        onChangeText={(t) => setAmount(parseFloat(t))}
                     />
                 </View>
                 <Text className="text-white text-lg font-bold mr-4">
@@ -142,7 +198,7 @@ const BetScreen = () => {
                 <Text className="text-white text-lg font-bold">
                     ${isNaN(prize) ? "0.00" : prize.toFixed(2)}
                 </Text>
-                <Button title="BET" onPress={multiplier > 1 ? sendPushNotification : () => console.log("Zakład nie mozliwy")} />
+                <Button title="BET" onPress={multiplier > 1 ? handleBet : () => console.log("Zakład nie mozliwy")} />
             </View>
         </View>
     );

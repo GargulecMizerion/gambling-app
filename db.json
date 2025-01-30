@@ -5,7 +5,7 @@
       "username": "kayman",
       "email": "kayman@gmail.com",
       "password": "kayman123",
-      "balance": 190
+      "balance": 59
     }
   ],
   "matches": [
@@ -689,40 +689,48 @@
   ],
   "notifications": [
     {
-      "id": "1",
-      "userId": "1",
-      "dateTime": "19:00 24.12.2024",
-      "message": "Masz nowy wygrany kupon! Gratulacje!"
+      "id": "a7a2",
+      "userId": "6791387a001648bc40fa",
+      "dateTime": "16:40 30.01.2025",
+      "message": "Nowy kupon z kursem 7.50 został zarejestrowany! Możliwa wygrana to $37.50"
     },
     {
-      "id": "2",
+      "id": "8b70",
       "userId": "6791387a001648bc40fa",
-      "dateTime": "15:23 23.12.2024",
-      "message": "Niestety, tym razem się nie udało! Kupon przegrany!"
+      "dateTime": "16:43 30.01.2025",
+      "message": "Nowy kupon z kursem 8.10 został zarejestrowany! Możliwa wygrana to $16.20"
     },
     {
-      "id": "3",
+      "id": "8fb8",
       "userId": "6791387a001648bc40fa",
-      "dateTime": "17:33 22.12.2024",
-      "message": "Pieniądze wpłynęły na twoje konto!"
+      "dateTime": "16:44 30.01.2025",
+      "message": "Nowy kupon z kursem 4.50 został zarejestrowany! Możliwa wygrana to $22.50"
+    }
+  ],
+  "history": [
+    {
+      "id": "42a4",
+      "amount": "37.50",
+      "odd": "7.50",
+      "date": "16:40 30.01.2025",
+      "status": 1,
+      "userId": "6791387a001648bc40fa"
     },
     {
-      "id": "4",
-      "userId": "6791387a001648bc40fa",
-      "dateTime": "07:15 21.12.2024",
-      "message": "Pieniądze wypłacone pomyślnie!"
+      "id": "6a4a",
+      "amount": "16.20",
+      "odd": "8.10",
+      "date": "16:43 30.01.2025",
+      "status": -1,
+      "userId": "6791387a001648bc40fa"
     },
     {
-      "id": "86b7",
-      "userId": "6791387a001648bc40fa",
-      "dateTime": "20:23 29.01.2025",
-      "message": "Pieniądze wpłacone pomyślnie!"
-    },
-    {
-      "id": "8bcc",
-      "userId": "6791387a001648bc40fa",
-      "dateTime": "20:33 29.01.2025",
-      "message": "Pieniądze wypłacone pomyślnie!"
+      "id": "86e9",
+      "amount": "22.50",
+      "odd": "4.50",
+      "date": "16:44 30.01.2025",
+      "status": 0,
+      "userId": "6791387a001648bc40fa"
     }
   ]
 }

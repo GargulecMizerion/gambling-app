@@ -3,7 +3,7 @@ import React from 'react'
 
 export const HistoryItem = ({amount, odd, status, date}) => {
 
-    let color = status == -1 ? "border-red" : status == 0 ? "border-black" : "border-green";
+    const color = status == -1 ? "border-red-500" : status == 0 ? "border-black" : "border-green-400";
 
     return (
         <View className={"w-full bg-secondaryGray border-4 rounded-xl p-[10px] " + color}>
@@ -12,8 +12,9 @@ export const HistoryItem = ({amount, odd, status, date}) => {
                     <Text className={"text-xl"}>{status == -1 ? "PRZEGRANY" : status == 0 ? "OTWARTY" : "WYGRANY"}</Text>
                 </View>
                 <View>
-                <Text  className={"text-xl"}>{date}</Text>
+
                     </View>
+                <Text  className={"text-xl"}>{date}</Text>
             </View>
 
             <View className={"flex-row justify-between"}>
@@ -22,7 +23,7 @@ export const HistoryItem = ({amount, odd, status, date}) => {
                     <Text  className={"text-xl"}>KURS: {odd}</Text>
                 </View>
                 <View className={"flex justify-center"}>
-                <Text  className={"text-4xl"}>${amount * odd}</Text>
+                <Text  className={"text-4xl"}>${(amount * odd).toFixed(2)}</Text>
                 </View>
             </View>
 

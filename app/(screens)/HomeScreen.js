@@ -43,7 +43,7 @@ const HomeScreen = () => {
 
     return (
         <View className={"w-full p-5 bg-primary h-full"}>
-            {tabNavHeader({balance: user?.balance})} {/* Przykładowe użycie user.balance */}
+            {tabNavHeader({balance: user?.balance})}
 
             <ScrollView>
                 {loading ? (

@@ -17,9 +17,9 @@ export  const homeItem = ({date, homeTeam, time, awayTeam, predictions, id, onPr
                 <Text className={"text-2xl   font-bold flex-1 text-center"}>{awayTeam}</Text>
             </View>
             <View className={"flex-row justify-between gap-2 mt-4"}>
-                {betButton({team: homeTeam, prediction: predictions.home, onPress: () => {onPress(id, predictions.home)}})}
-                {betButton({team: "Remis", prediction: predictions.draw, onPress: () => {onPress(id, predictions.draw)}})}
-                {betButton({team: awayTeam, prediction: predictions.away, onPress: () => {onPress(id, predictions.away)}})}
+                {betButton({team: homeTeam, prediction: predictions.home.toFixed(2), onPress: () => {onPress(id, predictions.home)}})}
+                {betButton({team: "Remis", prediction: predictions.draw.toFixed(2), onPress: () => {onPress(id, predictions.draw)}})}
+                {betButton({team: awayTeam, prediction: predictions.away.toFixed(2), onPress: () => {onPress(id, predictions.away)}})}
             </View>
         </View>
     )

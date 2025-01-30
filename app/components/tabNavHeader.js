@@ -18,17 +18,21 @@ export const tabNavHeader = ({balance}) => {
                         className={"border-2 border-darkGray rounded-full p-1"}
                         onPress={() => navigation.navigate("Payment")}
                     >
+                        <View>
                         <FontAwesome6Icon name={"plus"} size={15} />
+                        </View>
                     </TouchableOpacity>
                     <Text className="text-lg leading-none">
-                        ${balance ? balance.toFixed(2) : "0.00"}
+                        ${balance ? balance : "0.00"}
                     </Text>
                 </View>
                 <TouchableOpacity
                     className={"border-2 border-darkGray rounded-full p-2"}
                     onPress={() => navigation.navigate("Profile")}
                 >
+            <View>
                     <FontAwesome6Icon name={"user"} size={15} />
+            </View>
                 </TouchableOpacity>
             </View>
         </View>
